@@ -4,7 +4,7 @@
 <h2>Example with options</h2>
 
 <div class="highlight highlight-source-js">
-	<pre>$.armPops { dark: false }</pre>
+	<pre>$.armPops { dark<span class="pl-k">:</span> <span class="pl-c1">false</span> }</pre>
 </div>
 
 <h2>Options</h2>
