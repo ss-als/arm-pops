@@ -88,6 +88,7 @@
         layoutHeight     = layout[0].offsetHeight
         popupWidth       = popup[0].offsetWidth
         popupHeight      = popup[0].offsetHeight
+
         pseudoOffsetTop  = options.pseudo[0].offsetTop
         pseudoOffsetLeft = options.pseudo[0].offsetLeft
         pseudoWidth      = options.pseudo[0].offsetWidth

@@ -2,6 +2,12 @@
 <h2>jQuery popup plugin</h2>
 <p>Simple jQuery plugin for popup windows.</p>
 
+<h2>Example with options</h2>
+
+<div class="highlight highlight-source-js">
+	<pre>$.armPops { dark: false }</pre>
+</div>
+
 <h2>Options</h2>
 <table>
 	<thead>
