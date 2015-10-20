@@ -1,6 +1,5 @@
 # arm-pops
-<h2>jQuery popup plugin</h2>
-<p>Simple jQuery plugin in CoffeeScript for popup windows.</p>
+<p>Simple CoffeeScript popup plugin.</p>
 
 <h2>Example with options</h2>
 
