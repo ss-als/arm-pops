@@ -4,7 +4,7 @@
 <h2>Example with options</h2>
 
 <div class="highlight highlight-source-js">
-	<pre>$.armPops { dark<span class="pl-k">:</span> <span class="pl-c1">false</span> }</pre>
+	<pre>$.armPops { dark: false }</pre>
 </div>
 
 <h2>Options</h2>
@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td><code>pointerHeight</code></td>
-			<td>integer</td>
+			<td>string</td>
 			<td><code>null</code></td>
 			<td></td>
 		</tr>
