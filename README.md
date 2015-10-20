@@ -1,5 +1,4 @@
 # arm-pops
-Popup plugin
 <h2>jQuery popup plugin</h2>
 <p>Simple jQuery plugin for popup windows.</p>
 
