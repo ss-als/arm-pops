@@ -1,0 +1,68 @@
+@import "mixins"
+@import "variables"
+
+#dark
+
+  &:before
+    content: ''
+    background: #000
+    opacity: 0.7
+
+  #popup
+    width: 100%
+
+#popup
+  background: #FFF
+  @include border-radius(10px)
+  @include box-shadow(0, 2px, 10px, rgba(0, 0, 0, 0.075))
+  @include bg-gradient($gradient-start-color, $gradient-end-color)
+  box-sizing: border-box
+  padding: 10px
+  position: absolute
+
+  &.fixed
+    position: fixed
+
+  &.pointer
+
+    &:after
+      content: ''
+      position: absolute
+      bottom: -$pointer-height
+      width: 0
+      height: 0
+      border-style: solid
+      border-width: $pointer-height $pointer-width 0 $pointer-width
+      border-color: $gradient-end-color transparent transparent transparent
+
+    &.top
+
+      &:after
+        top: -$pointer-height
+        border-width: 0 $pointer-width $pointer-height $pointer-width
+        border-color: transparent transparent $gradient-start-color transparent
+
+    &.right
+
+      &:after
+        right: 10px
+
+  .close
+    cursor: pointer
+    position: absolute
+    top: 10px
+    right: 10px
+
+    &:before
+      content: '\2715'
+
+    &:hover
+      color: red
+
+#dark,
+#dark:before
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%

@@ -1,0 +1,57 @@
+body
+  margin: 0
+
+.hidden
+  display: none
+
+.pseudo-link
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.4)
+  cursor: pointer
+
+  &:hover
+    color: red
+    border-color: rgba(255, 0, 0, 0.4)
+
+.columns
+
+  &.col2
+
+    .column
+      width: 50%
+
+  &.col3
+
+    .column
+      width: 33.3%
+
+      &:last-child
+        text-align: right
+
+  .column
+    display: inline-block
+    margin-left: -4px
+
+    &:first-child
+      margin-left: 0
+
+#layout
+  position: relative
+  overflow: hidden
+
+#popup
+  width: 200px
+
+#header
+  background: deeppink
+  height: 50px
+
+#content
+  height: 800px
+
+#footer
+  background: fuchsia
+
+#header,
+#content,
+#footer
+  padding: 20px

@@ -1,0 +1,6 @@
+lib
+.idea
+
+*.css
+*.js
+*.map
