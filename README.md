@@ -46,7 +46,7 @@
 			<td><code>position</code></td>
 			<td>string</td>
 			<td><code>'smart'</code></td>
-			<td>popup position (top, bottom or smart)</td>
+			<td>popup position (<code>'top'</code>, <code>'bottom'</code> or <code>'smart'</code>)</td>
 		</tr>
 		<tr> 
 			<td><code>pseudo</code></td>
