@@ -1,26 +1,24 @@
 (($) ->
   jQuery.fn.armPops = (options) ->
 
-    object = {}
-
     options = $.extend
       dark:             true        # dark background
       pointer:          false       # triangle pointer
       pointerHeight:    null
       depending:        false       # depending for different content
       position:         'smart'     # popup position (top, bottom or smart)
-      pseudo:           object      # pseudo link
+      pseudo:           null        # pseudo link
       ajax:             false       # ajax mode
-      layout:           object
-      contentContainer: object
+      layout:           null
+      contentContainer: null
       outsideClick:     true        # click outside popup
     , options;
 
     make = ->
-      dark    = {}
-      popup   = {}
-      close   = {}
-      content = {}
+      dark    = null
+      popup   = null
+      close   = null
+      content = null
 
       popupContainer   = '<div id="popup" />'
       closeContainer   = '<div class="close" />'
