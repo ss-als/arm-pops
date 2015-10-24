@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td><code>pointerHeight</code></td>
-			<td>string</td>
+			<td>number</td>
 			<td><code>null</code></td>
 			<td></td>
 		</tr>
