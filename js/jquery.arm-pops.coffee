@@ -53,7 +53,6 @@
       # Add content on popup
       if options.ajax
         console.log 'ajax'
-
         return
 
       if options.depending
