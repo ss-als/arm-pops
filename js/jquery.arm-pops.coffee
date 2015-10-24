@@ -76,7 +76,7 @@
 
         content.clone().appendTo popup
 
-      if options.dark is false
+      if options.dark is off
         layoutWidth      = layout[0].offsetWidth
         layoutHeight     = layout[0].offsetHeight
         popupWidth       = popup[0].offsetWidth
