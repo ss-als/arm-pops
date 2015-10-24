@@ -4,23 +4,23 @@
     object = {}
 
     options = $.extend
-      dark:             true      # dark background
-      pointer:          false     # triangle pointer
+      dark:             true        # dark background
+      pointer:          false       # triangle pointer
       pointerHeight:    null
-      depending:        false     # depending for different content
-      position:         'smart'   # popup position (top, bottom or smart)
-      pseudo:           object    # pseudo link
-      ajax:             false     # ajax mode
+      depending:        false       # depending for different content
+      position:         'smart'     # popup position (top, bottom or smart)
+      pseudo:           object      # pseudo link
+      ajax:             false       # ajax mode
       layout:           object
       contentContainer: object
-      content:          object
-      outsideClick:     true      # click outside popup
+      outsideClick:     true        # click outside popup
     , options;
 
     make = ->
-      dark  = {}
-      popup = {}
-      close = {}
+      dark    = {}
+      popup   = {}
+      close   = {}
+      content = {}
 
       popupContainer   = '<div id="popup" />'
       closeContainer   = '<div class="close" />'
@@ -29,8 +29,11 @@
       layout           = options.layout
       pseudo           = options.pseudo
       container        = options.contentContainer     # container from content
-      content          = options.content              # content of the container
       pointerHeight    = options.pointerHeight        # triangle pointer height
+
+      # Get content for popup
+      container.each ->
+        content = this.children
 
       # Create popup
       if options.dark
@@ -52,34 +55,27 @@
       # Add content on popup
       if options.ajax
         console.log 'ajax'
-      else
 
-        if options.depending
-          dependClass = null
-          containerClass = container[0].className.split ' '
+        return
 
-          pseudoClasses = pseudo.attr 'class'
-          .split ' '
+      if options.depending
+        dependClass = null
+        containerClass = container[0].className.split ' '
 
-          container.each ->
-            containerClasses = this.className.split ' '
+        pseudoClasses = pseudo.attr 'class'
+        .split ' '
 
-            for a in containerClasses
+        container.each ->
+          containerClasses = this.className.split ' '
 
-              for b in pseudoClasses
+          for a in containerClasses
 
-                if a is b
-                  dependClass = b
+            for b in pseudoClasses
 
-          content = $ '.' + containerClass[0] + '.' + dependClass + ' *'
+              if a is b
+                dependClass = b
 
-          pseudo.each ->
-            classes = this.className
-            .split ' '
-
-            container.each ->
-              classes = this.className
-              .split ' '
+        content = $ '.' + containerClass[0] + '.' + dependClass + ' *'
 
         content.clone().appendTo popup
 
@@ -135,6 +131,8 @@
 
       # Close popup
       popup.append closeContainer
+
+      # Get close after create
       close = $ '.close'
 
       closePopup = ->
@@ -144,10 +142,10 @@
           popup.remove()
 
       popup.click (e) ->
-        e.stopPropagation
+        e.stopPropagation()
 
       pseudo.click (e) ->
-        e.stopPropagation
+        e.stopPropagation()
 
       close.click ->
         do closePopup
@@ -157,10 +155,8 @@
         if e.keyCode == 27
           do closePopup
 
-#      if options.outsideClick
-#        $ document
-#        .click ->
-#          do closePopup
+      if options.outsideClick
+        console.log 'outside click'
 
     return this.each make
 

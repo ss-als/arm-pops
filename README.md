@@ -73,12 +73,6 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td><code>content</code></td>
-			<td>object</td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
 			<td><code>outsideClick</code></td>
 			<td>boolean</td>
 			<td><code>true</code></td>

@@ -1,9 +1,8 @@
 $(document).ready ->
 
-  layout = $ '#layout'
-  pseudo = $ '.pseudo-link'
-  contentContainer = $ '.content-popup'
-  popupContent = contentContainer.find '*'
+  layout  = $ '#layout'
+  pseudo  = $ '.pseudo-link'
+  content = $ '.content-popup'
 
   pseudo.click ->
     layout.armPops {
@@ -13,8 +12,7 @@ $(document).ready ->
       layout: layout
       depending: true
       position: 'smart'
-      contentContainer: contentContainer
-      content: popupContent
+      contentContainer: content
       pseudo: $(@)
       outsideClick: true
     }
