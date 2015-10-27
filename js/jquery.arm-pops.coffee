@@ -4,7 +4,7 @@
     options = $.extend
       dark:             true        # dark background
       pointer:          false       # triangle pointer
-      pointerHeight:    null
+      pointerHeight:    0
       depending:        false       # depending for different content
       position:         'smart'     # popup position (top, bottom or smart)
       pseudo:           null        # pseudo link
