@@ -6,7 +6,7 @@ $(document).ready ->
 
   pseudo.click ->
     layout.armPops {
-      ajax: true
+      ajax: false
       dark: false
       depending: true
       pointer: true
