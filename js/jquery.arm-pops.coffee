@@ -30,7 +30,7 @@
       container        = options.contentContainer     # container from content
       pointerHeight    = options.pointerHeight        # triangle pointer height
 
-      popupCreate = ->
+      createPopup = ->
         if options.dark
           layout.prepend darkContainer
 
@@ -41,7 +41,7 @@
         else
           layout.prepend popupContainer
 
-      do popupCreate
+      do createPopup
 
       # get popup after create
       popup = $ '.popup'
@@ -49,7 +49,7 @@
       if options.pointer
         popup.addClass 'pointer'
 
-      popupContent = ->
+      contentPopup = ->
         if options.depending
           dependentName = null     # dependent class
           pseudoClasses = pseudo[0].className.split ' '
@@ -83,7 +83,7 @@
           container.each ->
             content = this.children
 
-      popupPosition = ->
+      positionPopup = ->
 
         if options.dark is off
           layoutWidth      = layout[0].offsetWidth
@@ -129,13 +129,13 @@
             popup.css
               left: pseudoOffsetLeft + 'px'
 
-      popupClose = ->
+      closePopup = ->
         popup.append closeContainer
 
         # get close after create
         close = $ '.close'
 
-        closePopup = ->
+        popupRemove = ->
           if options.dark
             dark.remove()
           else
@@ -148,19 +148,19 @@
           e.stopPropagation()
 
         close.click ->
-          do closePopup
+          do popupRemove
 
         $ document
         .keyup (e) ->
           if e.keyCode == 27
-            do closePopup
+            do popupRemove
 
         if options.outsideClick
           console.log 'outside click'
 
-      do popupContent
-      do popupPosition
-      do popupClose
+      do contentPopup
+      do positionPopup
+      do closePopup
 
     return this.each make
 
