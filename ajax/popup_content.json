@@ -1,0 +1,8 @@
+{
+  "popup": {
+    "content": {
+      "about":   "{popup content for about}",
+      "company": "{popup content for company}"
+    }
+  }
+}

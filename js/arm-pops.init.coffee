@@ -6,11 +6,12 @@ $(document).ready ->
 
   pseudo.click ->
     layout.armPops {
+      ajax: true
       dark: false
+      depending: true
       pointer: true
       pointerHeight: 20
       layout: layout
-      depending: true
       position: 'smart'
       contentContainer: content
       pseudo: $(@)

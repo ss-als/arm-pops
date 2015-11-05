@@ -1,4 +1,5 @@
 (($) ->
+
   jQuery.fn.armPops = (options) ->
 
     options = $.extend
@@ -20,7 +21,7 @@
       close   = null
       content = null
 
-      popupContainer   = '<div id="popup" />'
+      popupContainer   = '<div class="popup" />'
       closeContainer   = '<div class="close" />'
       darkContainer    = '<div id="dark" />'
 
@@ -29,52 +30,58 @@
       container        = options.contentContainer     # container from content
       pointerHeight    = options.pointerHeight        # triangle pointer height
 
-      # Get content for popup
-      container.each ->
-        content = this.children
-
-      # Create popup
+      # create popup
       if options.dark
         layout.prepend darkContainer
 
-        # Get dark after create
+        # get dark after create
         dark = $ '#dark'
 
         dark.append popupContainer
       else
         layout.prepend popupContainer
 
-      # Get popup after create
-      popup = $ '#popup'
+      # get popup after create
+      popup = $ '.popup'
 
       if options.pointer
         popup.addClass 'pointer'
 
-      # Add content on popup
-      if options.ajax
-        console.log 'ajax'
-        return
-
+      # add content on popup
       if options.depending
-        dependClass = null
-        containerClass = container[0].className.split ' '
+        dependentName = null     # dependent class
+        pseudoClasses = pseudo[0].className.split ' '
 
-        pseudoClasses = pseudo.attr 'class'
-        .split ' '
+        console.log pseudoClasses
 
+        # ajax mode
+        if options.ajax
+          $.getJSON './ajax/popup_content.json', (json) ->
+
+            for a of json.popup.content
+              for b in pseudoClasses
+                if a is b
+                  dependentName = b
+
+            popup.append json.popup.content[dependentName]
+
+        else
+          containerClass = container[0].className.split ' '
+
+          container.each ->
+            containerClasses = this.className.split ' '
+
+            for a in containerClasses
+              for b in pseudoClasses
+                if a is b
+                  dependentName = b
+
+          content = $ '.' + containerClass[0] + '.' + dependentName + ' *'
+
+          content.clone().appendTo popup
+      else
         container.each ->
-          containerClasses = this.className.split ' '
-
-          for a in containerClasses
-
-            for b in pseudoClasses
-
-              if a is b
-                dependClass = b
-
-        content = $ '.' + containerClass[0] + '.' + dependClass + ' *'
-
-        content.clone().appendTo popup
+          content = this.children
 
       if options.dark is off
         layoutWidth      = layout[0].offsetWidth
@@ -92,44 +99,38 @@
 
         # popup top position
         if options.position is 'top'
-          popup.css {
+          popup.css
             top: (pseudoOffsetTop - pseudoHeight - popupHeight) + 'px'
-          }
 
         # popup bottom position
         if options.position is 'bottom'
           popup.addClass 'top'
-          popup.css {
+          popup.css
             top: (pseudoOffsetTop - pseudoHeight + popupHeight) + 'px'
-          }
 
         # popup smart position
         if options.position is 'smart'
 
           if popupHeight < pseudoBottomDistance
             popup.addClass 'top'
-            popup.css {
+            popup.css
               top: (pseudoOffsetTop + pseudoHeight + pointerHeight) + 'px'
-            }
           else
-            popup.css {
+            popup.css
               bottom: (layoutHeight - pseudoOffsetTop + pointerHeight) + 'px'
-            }
 
         if popupWidth > pseudoRightDistance
           popup.addClass 'right'
-          popup.css {
+          popup.css
             right: (layoutWidth - pseudoOffsetLeft - pseudoWidth) + 'px'
-          }
         else
-          popup.css {
+          popup.css
             left: pseudoOffsetLeft + 'px'
-          }
 
-      # Close popup
+      # close popup
       popup.append closeContainer
 
-      # Get close after create
+      # get close after create
       close = $ '.close'
 
       closePopup = ->
